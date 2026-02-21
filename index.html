@@ -127,6 +127,32 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
+.certs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cert-card {
+  background: rgba(255,255,255,0.1);
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cert-card a {
+  color: #00eaff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cert-card:hover {
+  background: rgba(0, 234, 255, 0.1);
+  transform: translateY(-5px);
+}
   </style>
 </head>
 
@@ -210,20 +236,39 @@
 </section>
 
   <!-- Certificates Section -->
-  <section id="certificates" class="container">
-    <h2>Certificates</h2>
-    <div class="certs-grid">
-      <div class="cert-card"><a href="#" target="_blank">Cybersecurity Fundamentals</a></div>
-      <div class="cert-card"><a href="#" target="_blank">Fundamentals of Cryptography</a></div>
-      <div class="cert-card"><a href="#" target="_blank">Python Case Study – Cryptography</a></div>
-      <div class="cert-card"><a href="#" target="_blank">Introduction to PKI</a></div>
-      <div class="cert-card"><a href="#" target="_blank">GFG – Aptitude & Reasoning</a></div>
-      <div class="cert-card"><a href="#" target="_blank">Google AI for Everyone</a></div>
-      <div class="cert-card"><a href="#" target="_blank">IBM – Prompt Engineering</a></div>
-      <div class="cert-card"><a href="#" target="_blank">Introduction to ChatGPT</a></div>
+  <!-- Certificates Section -->
+<section id="certificates" class="container">
+  <h2>Certificates</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">Cybersecurity Fundamentals</a>
     </div>
-  </section>
-
+    <div class="cert-card">
+      <a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">Fundamentals of Cryptography</a>
+    </div>
+    <div class="cert-card">
+      <a href="certificates/python-cryptography-case-study.pdf" target="_blank">Python Case Study – Cryptography</a>
+    </div>
+    <div class="cert-card">
+      <a href="certificates/introduction-to-pki.pdf" target="_blank">Introduction to PKI</a>
+    </div>
+    <div class="cert-card">
+      <a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">GFG – Aptitude & Reasoning</a>
+    </div>
+    <div class="cert-card">
+      <a href="certificates/google-ai-for-everyone.pdf" target="_blank">Google AI for Everyone</a>
+    </div>
+    <div class="cert-card">
+      <a href="certificates/ibm-prompt-engineering.pdf" target="_blank">IBM – Prompt Engineering</a>
+    </div>
+    <div class="cert-card">
+      <a href="certificates/introduction-to-chatgpt.pdf" target="_blank">Introduction to ChatGPT</a>
+    </div>
+    <div class="cert-card">
+      <a href="certificates/cryptography-in-it-security.pdf" target="_blank">Cryptography in IT Security & Hacking</a>
+    </div>
+  </div>
+</section>
   <!-- Contact Section -->
   <section id="contact" class="container">
     <h2>Contact Me</h2>

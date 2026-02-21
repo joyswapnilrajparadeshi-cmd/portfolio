@@ -11,418 +11,112 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
- <style>
-/* ------------------ Global Styles ------------------ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+  <style>
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff; }
+    a { text-decoration: none; color: inherit; }
 
-html {
-  scroll-behavior: smooth;
-}
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 20px;
+      font-weight: 600;
+      color: #00eaff;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #fff; }
 
-body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
-}
+    section { padding: 80px 0; }
+    h1,h2,h3 { color: #00eaff; }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+    /* Hero */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+    }
+    #hero h1 { font-size: 48px; margin-bottom: 10px; }
+    #hero h3 { font-weight: 400; color: #fff; margin-bottom: 20px; }
+    #hero p { color: #ccc; max-width: 600px; margin-bottom: 30px; line-height: 1.6; }
+    #hero .btn { padding: 14px 28px; background: #00eaff; color: #000; font-weight: bold; border-radius: 25px; transition: 0.3s ease; }
+    #hero .btn:hover { background: #fff; transform: scale(1.05); }
+    .social-icons { margin-top: 20px; }
+    .social-icons a { margin: 0 10px; font-size: 24px; color: #00eaff; transition: 0.3s; }
+    .social-icons a:hover { color: #fff; transform: scale(1.2); }
 
-/* ------------------ Navbar ------------------ */
-nav {
-  position: sticky;
-  top: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  justify-content: center;
-  padding: 15px 0;
-  z-index: 1000;
-}
+    /* Container */
+    .container { width: 90%; max-width: 1100px; margin: auto; }
 
-nav a {
-  margin: 0 20px;
-  font-weight: 600;
-  color: #00eaff;
-  transition: 0.3s;
-}
+    /* About */
+    #about { background: rgba(0,0,0,0.6); border-radius: 12px; }
+    #about h2 { text-align: center; margin-bottom: 20px; }
+    #about p { max-width: 800px; margin: auto; color: #ddd; line-height: 1.8; text-align: center; }
 
-nav a:hover {
-  color: #fff;
-}
+    /* Skills */
+    #skills h2 { text-align: center; margin-bottom: 40px; }
+    .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .skill-card { background: rgba(0,0,0,0.6); padding: 20px 25px; border-radius: 12px; width: 140px; text-align: center; font-weight: 600; transition: 0.3s ease; }
+    .skill-card:hover { background: #00eaff; color: #000; transform: translateY(-5px); }
 
-/* ------------------ Sections ------------------ */
-section {
-  padding: 80px 0;
-}
+    /* Projects */
+    #projects h2 { text-align: center; margin-bottom: 40px; }
+    .projects-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+    .project-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 15px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .project-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+    .project-card h3 { margin: 10px 0 5px 0; color: #00eaff; }
+    .project-card p { font-size: 14px; line-height: 1.5; color: #ddd; }
+    .project-card a { display: inline-block; margin-top: 10px; padding: 8px 18px; background: #00eaff; color: black; text-decoration: none; border-radius: 25px; transition: 0.3s ease; }
+    .project-card a:hover { background: white; transform: scale(1.05); }
 
-h1, h2, h3 {
-  color: #00eaff;
-}
+    /* Certificates */
+    #certificates h2 { text-align: center; margin-bottom: 40px; }
+    .certs-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .cert-card { background: rgba(255,255,255,0.05); padding: 15px 20px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, background 0.3s ease; }
+    .cert-card a { color: #00eaff; text-decoration: none; font-weight: bold; }
+    .cert-card:hover { background: rgba(0,234,255,0.1); transform: translateY(-5px); }
 
-/* ------------------ Hero ------------------ */
-#hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100vh;
-}
+    /* Contact */
+    #contact { text-align: center; }
+    #contact h2 { margin-bottom: 20px; }
+    #contact p { color: #ccc; margin-bottom: 15px; }
+    .contact-btn { display: inline-block; padding: 12px 28px; background: #00eaff; color: #000; border-radius: 25px; font-weight: bold; margin-top: 10px; transition: 0.3s ease; }
+    .contact-btn:hover { background: #fff; transform: scale(1.05); }
 
-#hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
+    /* Footer */
+    footer { text-align: center; padding: 20px 0; color: #aaa; background: rgba(0,0,0,0.6); margin-top: 50px; }
 
-#hero h3 {
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 20px;
-}
+    /* Responsive */
+    @media(max-width: 768px) {
+      #hero h1 { font-size: 36px; }
+      #hero h3 { font-size: 22px; }
+      .skills-grid, .projects-container, .certs-grid { flex-direction: column; align-items: center; }
+    }
 
-#hero p {
-  color: #ccc;
-  max-width: 600px;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-#hero .btn {
-  padding: 14px 28px;
-  background: #00eaff;
-  color: #000;
-  font-weight: bold;
-  border-radius: 25px;
-  transition: 0.3s ease;
-}
-
-#hero .btn:hover {
-  background: #fff;
-  transform: scale(1.05);
-}
-
-/* Social icons */
-.social-icons {
-  margin-top: 20px;
-}
-
-.social-icons a {
-  margin: 0 10px;
-  font-size: 24px;
-  color: #00eaff;
-  transition: 0.3s;
-}
-
-.social-icons a:hover {
-  color: #fff;
-  transform: scale(1.2);
-}
-
-/* ------------------ Container ------------------ */
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* ------------------ About ------------------ */
-#about {
-  background: rgba(0,0,0,0.6);
-  border-radius: 12px;
-}
-
-#about h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-#about p {
-  max-width: 800px;
-  margin: auto;
-  color: #ddd;
-  line-height: 1.8;
-  text-align: center;
-}
-
-/* ------------------ Skills ------------------ */
-#skills h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.skill-card {
-  background: rgba(0,0,0,0.6);
-  padding: 20px 25px;
-  border-radius: 12px;
-  width: 140px;
-  text-align: center;
-  font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.skill-card:hover {
-  background: #00eaff;
-  color: #000;
-  transform: translateY(-5px);
-}
-
-/* ------------------ Projects ------------------ */
-#projects h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.project-card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 15px;
-  width: 280px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
-.project-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.project-card h3 {
-  margin: 10px 0 5px 0;
-  color: #00eaff;
-}
-
-.project-card p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #ddd;
-}
-
-.project-card a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 18px;
-  background: #00eaff;
-  color: black;
-  text-decoration: none;
-  border-radius: 25px;
-  transition: 0.3s ease;
-}
-
-.project-card a:hover {
-  background: white;
-  transform: scale(1.05);
-}
-
-/* ------------------ Certificates ------------------ */
-#certificates h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.certs-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.cert-card {
-  background: rgba(255,255,255,0.05);
-  padding: 15px 20px;
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.cert-card a {
-  color: #00eaff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.cert-card:hover {
-  background: rgba(0,234,255,0.1);
-  transform: translateY(-5px);
-}
-
-/* ------------------ Contact ------------------ */
-#contact {
-  text-align: center;
-}
-
-#contact h2 {
-  margin-bottom: 20px;
-}
-
-#contact p {
-  color: #ccc;
-  margin-bottom: 15px;
-}
-
-.contact-btn {
-  display: inline-block;
-  padding: 12px 28px;
-  background: #00eaff;
-  color: #000;
-  border-radius: 25px;
-  font-weight: bold;
-  margin-top: 10px;
-  transition: 0.3s ease;
-}
-
-.contact-btn:hover {
-  background: #fff;
-  transform: scale(1.05);
-}
-
-/* ------------------ Footer ------------------ */
-footer {
-  text-align: center;
-  padding: 20px 0;
-  color: #aaa;
-  background: rgba(0,0,0,0.6);
-  margin-top: 50px;
-}
-
-/* ------------------ Responsive ------------------ */
-@media(max-width: 768px) {
-  #hero h1 {
-    font-size: 36px;
-  }
-  #hero h3 {
-    font-size: 22px;
-  }
-  .skills-grid, .projects-container, .certs-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* ------------------ Skills & Certificates Map (Static) ------------------ */
-.skills-map, .certs-map {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  margin: 40px auto;
-}
-
-.skill-center, .cert-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.skill-center img, .cert-center img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  box-shadow: 0 0 20px #00eaff;
-}
-
-.skill-center p, .cert-center p {
-  color: #00eaff;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-.skill-orbit, .cert-orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.skill-orbit img, .cert-orbit img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: 0 0 15px #00eaff;
-}
-
-.skill-orbit p, .cert-orbit p {
-  color: #00eaff;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.skill-orbit:hover, .cert-orbit:hover {
-  transform: scale(1.2) translateY(-10px);
-}
-
-/* Static orbit positions */
-.skill-orbit:nth-child(1){--i:0} 
-.skill-orbit:nth-child(2){--i:1}
-.skill-orbit:nth-child(3){--i:2} 
-.skill-orbit:nth-child(4){--i:3}
-.skill-orbit:nth-child(5){--i:4} 
-.skill-orbit:nth-child(6){--i:5}
-.skill-orbit:nth-child(7){--i:6} 
-.skill-orbit:nth-child(8){--i:7}
-.skill-orbit:nth-child(9){--i:8} 
-.skill-orbit:nth-child(10){--i:9}
-.skill-orbit:nth-child(11){--i:10} 
-.skill-orbit:nth-child(12){--i:11}
-
-.cert-orbit:nth-child(1){--i:0} 
-.cert-orbit:nth-child(2){--i:1}
-.cert-orbit:nth-child(3){--i:2} 
-.cert-orbit:nth-child(4){--i:3}
-.cert-orbit:nth-child(5){--i:4} 
-.cert-orbit:nth-child(6){--i:5}
-.cert-orbit:nth-child(7){--i:6} 
-.cert-orbit:nth-child(8){--i:7}
-.cert-orbit:nth-child(9){--i:8}
-
-/* Apply static rotation positions */
-.skill-orbit { transform: rotate(calc(var(--i) * 36deg)) translateX(160px); }
-.cert-orbit { transform: rotate(calc(var(--i) * 40deg)) translateX(160px); }
-
-/* Orbit lines */
-.skill-orbit::before, .cert-orbit::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 160px;
-  background: rgba(0,234,255,0.3);
-  transform-origin: top center;
-  z-index: -1;
-}
-</style>
+  </style>
 </head>
 
 <body>
@@ -459,31 +153,23 @@ footer {
   </section>
 
   <!-- Skills Section -->
-<section id="skills" class="container">
-  <h2>Skills</h2>
-  <div class="skills-map">
-    <!-- Center -->
-    <div class="skill-center">
-      <img src="images/skills-center.png" alt="My Skills">
-      <p>My Skills</p>
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">C</div>
+      <div class="skill-card">Java</div>
+      <div class="skill-card">Python</div>
+      <div class="skill-card">HTML</div>
+      <div class="skill-card">CSS</div>
+      <div class="skill-card">JavaScript</div>
+      <div class="skill-card">React</div>
+      <div class="skill-card">Node.js</div>
+      <div class="skill-card">Express</div>
+      <div class="skill-card">PHP</div>
+      <div class="skill-card">Power BI</div>
+      <div class="skill-card">Excel</div>
     </div>
-
-    <!-- Orbiting Skills -->
-    <div class="skill-orbit" style="--i:0;"><img src="images/c.jpg" alt="C"><p>C</p></div>
-    <div class="skill-orbit" style="--i:1;"><img src="images/java.png" alt="Java"><p>Java</p></div>
-    <div class="skill-orbit" style="--i:2;"><img src="images/python.png" alt="Python"><p>Python</p></div>
-    <div class="skill-orbit" style="--i:3;"><img src="images/html.png" alt="HTML"><p>HTML</p></div>
-    <div class="skill-orbit" style="--i:4;"><img src="images/css.png" alt="CSS"><p>CSS</p></div>
-    <div class="skill-orbit" style="--i:5;"><img src="images/js.png" alt="JS"><p>JS</p></div>
-    <div class="skill-orbit" style="--i:6;"><img src="images/react.png" alt="React"><p>React</p></div>
-    <div class="skill-orbit" style="--i:7;"><img src="images/node.jpg" alt="Node.js"><p>Node.js</p></div>
-    <div class="skill-orbit" style="--i:8;"><img src="images/express.png" alt="Express"><p>Express</p></div>
-    <div class="skill-orbit" style="--i:9;"><img src="images/php.jpg" alt="PHP"><p>PHP</p></div>
-    <div class="skill-orbit" style="--i:10;"><img src="images/powerbi.jpg" alt="Power BI"><p>Power BI</p></div>
-    <div class="skill-orbit" style="--i:11;"><img src="images/excel.jpg" alt="Excel"><p>Excel</p></div>
-  </div>
-</section>
-
+  </section>
 
   <!-- Projects Section -->
   <section id="projects">
@@ -516,28 +202,22 @@ footer {
     </div>
   </section>
 
- <!-- Certificates Section -->
-<section id="certificates" class="container">
-  <h2>Certificates</h2>
-  <div class="certs-map">
-    <!-- Center -->
-    <div class="cert-center">
-      <img src="images/cert-center.png" alt="Certificates">
-      <p>Certificates</p>
+  <!-- Certificates Section -->
+  <section id="certificates" class="container">
+    <h2>Certificates</h2>
+    <div class="certs-grid">
+      <div class="cert-card"><a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">Cybersecurity Fundamentals</a></div>
+      <div class="cert-card"><a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">Fundamentals of Cryptography</a></div>
+      <div class="cert-card"><a href="certificates/python-cryptography-case-study.pdf" target="_blank">Python Case Study – Cryptography</a></div>
+      <div class="cert-card"><a href="certificates/introduction-to-pki.pdf" target="_blank">Introduction to PKI</a></div>
+      <div class="cert-card"><a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">GFG – Aptitude & Reasoning</a></div>
+      <div class="cert-card"><a href="certificates/google-ai-for-everyone.pdf" target="_blank">Google AI for Everyone</a></div>
+      <div class="cert-card"><a href="certificates/ibm-prompt-engineering.pdf" target="_blank">IBM – Prompt Engineering</a></div>
+      <div class="cert-card"><a href="certificates/introduction-to-chatgpt.pdf" target="_blank">Introduction to ChatGPT</a></div>
+      <div class="cert-card"><a href="certificates/cryptography-in-it-security.pdf" target="_blank">Cryptography in IT Security & Hacking</a></div>
     </div>
+  </section>
 
-    <!-- Orbiting Certificates -->
-    <div class="cert-orbit" style="--i:0;"><img src="images/cybersecurity.png" alt="Cybersecurity"><p>Cybersecurity</p></div>
-    <div class="cert-orbit" style="--i:1;"><img src="images/cryptography.png" alt="Cryptography"><p>Cryptography</p></div>
-    <div class="cert-orbit" style="--i:2;"><img src="images/python.png" alt="Python"><p>Python Cryptography</p></div>
-    <div class="cert-orbit" style="--i:3;"><img src="images/pki.png" alt="PKI"><p>PKI</p></div>
-    <div class="cert-orbit" style="--i:4;"><img src="images/gfg.png" alt="GFG"><p>GFG Aptitude</p></div>
-    <div class="cert-orbit" style="--i:5;"><img src="images/google-ai.png" alt="Google AI"><p>Google AI</p></div>
-    <div class="cert-orbit" style="--i:6;"><img src="images/ibm.png" alt="IBM"><p>IBM Prompt</p></div>
-    <div class="cert-orbit" style="--i:7;"><img src="images/chatgpt.png" alt="ChatGPT"><p>ChatGPT</p></div>
-    <div class="cert-orbit" style="--i:8;"><img src="images/cryptography-it.png" alt="IT Security"><p>IT Security</p></div>
-  </div>
-</section>
   <!-- Contact Section -->
   <section id="contact" class="container">
     <h2>Contact Me</h2>

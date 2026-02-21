@@ -205,10 +205,126 @@
     .cert-box a:hover { background: #00eaff; color: #000; transform: scale(1.05); }
 
     /* Contact */
-    #contact { text-align: center; }
-    .contact-btn { display: inline-block; padding: 12px 28px; background: #00eaff; color: #000; border-radius: 25px; font-weight: bold; margin-top: 10px; transition: 0.3s ease; animation: pulse 2s infinite; }
-    .contact-btn:hover { background: #fff; transform: scale(1.05); }
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+   /* Modern Contact Section */
+.contact-modern {
+  text-align: center;
+}
+
+.contact-sub {
+  color: #ccc;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 35px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 40px rgba(0,234,255,0.15);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+}
+
+.info-box {
+  background: rgba(0,0,0,0.4);
+  border-radius: 18px;
+  padding: 18px 22px;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,234,255,0.3);
+}
+
+.info-box i {
+  font-size: 26px;
+  color: #00eaff;
+  margin-bottom: 8px;
+}
+
+.info-box h4 {
+  color: #00eaff;
+  margin-bottom: 5px;
+}
+
+.info-box a {
+  color: #ddd;
+}
+
+.contact-social {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.contact-social a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.contact-social .github {
+  background: #000;
+  color: #fff;
+}
+
+.contact-social .linkedin {
+  background: #0A66C2;
+  color: #fff;
+}
+
+.contact-social a:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.contact-main-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg,#00eaff,#00b3ff);
+  color: #000;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.contact-main-btn:hover {
+  transform: scale(1.08);
+  background: #fff;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 20px;
+  border: none;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+}
 
     /* Footer */
     footer { text-align: center; padding: 20px 0; color: #aaa; background: rgba(0,0,0,0.6); margin-top: 50px; }
@@ -334,15 +450,56 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="container" data-aos="fade-up">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:joyswapnilrajparadeshi@gmail.com">joyswapnilrajparadeshi@gmail.com</a></p>
-    <p>Location: Pamidi, Andhra Pradesh, India</p>
-    <a class="contact-btn" href="mailto:joyswapnilrajparadeshi@gmail.com">Send Email</a>
-    <div style="margin-top: 20px;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.5509816266543!2d78.16273341535548!3d15.152462988786407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf4f55e3c63f0b%3A0xa2e5a5c0b0f2a7aa!2sPamidi%2C%20Andhra%20Pradesh%2C%20India!5e0!3m2!1sen!2sin!4v1696174148389!5m2!1sen!2sin" width="100%" height="250" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+ <section id="contact" class="container contact-modern" data-aos="fade-up">
+  <h2>Let's Connect</h2>
+  <p class="contact-sub">Have a project idea, collaboration, or opportunity? Feel free to reach out.</p>
+
+  <div class="contact-card">
+
+    <div class="contact-info">
+
+      <div class="info-box">
+        <i class="fas fa-envelope"></i>
+        <h4>Email</h4>
+        <a href="mailto:joyswapnilrajparadeshi@gmail.com">
+          joyswapnilrajparadeshi@gmail.com
+        </a>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>Location</h4>
+        <p>Pamidi, Andhra Pradesh, India</p>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-link"></i>
+        <h4>Connect With Me</h4>
+
+        <div class="contact-social">
+          <a href="https://github.com/joyswapnilrajparadeshi-cmd" target="_blank" class="github">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+
+          <a href="https://www.linkedin.com/in/joy-swapnil-raj-paradeshi-23b3aa387" target="_blank" class="linkedin">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <a href="mailto:joyswapnilrajparadeshi@gmail.com" class="contact-main-btn">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </a>
+
     </div>
-  </section>
+
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.5509816266543!2d78.16273341535548!3d15.152462988786407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf4f55e3c63f0b%3A0xa2e5a5c0b0f2a7aa!2sPamidi%2C%20Andhra%20Pradesh%2C%20India!5e0!3m2!1sen!2sin!4v1696174148389!5m2!1sen!2sin"
+        allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+  </div>
+</section>
 
   <footer>
     © 2026 Paradeshi Joy Swapnil Raj | All Rights Reserved

@@ -4,59 +4,102 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paradeshi Joy Swapnil Raj | Portfolio</title>
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
     /* Global Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #0f2027; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff; scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
+    body { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff; }
     a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 20px;
+      font-weight: 600;
+      color: #00eaff;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #fff; }
+
     section { padding: 80px 0; }
-    h1, h2, h3 { color: #00eaff; }
+    h1,h2,h3 { color: #00eaff; }
 
-    /* Container */
-    .container { width: 90%; max-width: 1100px; margin: auto; }
-
-    /* Hero Section */
-    #hero { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100vh; }
+    /* Hero */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+    }
     #hero h1 { font-size: 48px; margin-bottom: 10px; }
     #hero h3 { font-weight: 400; color: #fff; margin-bottom: 20px; }
     #hero p { color: #ccc; max-width: 600px; margin-bottom: 30px; line-height: 1.6; }
     #hero .btn { padding: 14px 28px; background: #00eaff; color: #000; font-weight: bold; border-radius: 25px; transition: 0.3s ease; }
     #hero .btn:hover { background: #fff; transform: scale(1.05); }
+    .social-icons { margin-top: 20px; }
+    .social-icons a { margin: 0 10px; font-size: 24px; color: #00eaff; transition: 0.3s; }
+    .social-icons a:hover { color: #fff; transform: scale(1.2); }
 
-    /* About Section */
+    /* Container */
+    .container { width: 90%; max-width: 1100px; margin: auto; }
+
+    /* About */
     #about { background: rgba(0,0,0,0.6); border-radius: 12px; }
     #about h2 { text-align: center; margin-bottom: 20px; }
     #about p { max-width: 800px; margin: auto; color: #ddd; line-height: 1.8; text-align: center; }
 
-    /* Skills Section */
+    /* Skills */
     #skills h2 { text-align: center; margin-bottom: 40px; }
     .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .skill-card { background: rgba(0,0,0,0.6); padding: 20px 25px; border-radius: 12px; width: 140px; text-align: center; transition: 0.3s ease; }
+    .skill-card { background: rgba(0,0,0,0.6); padding: 20px 25px; border-radius: 12px; width: 140px; text-align: center; font-weight: 600; transition: 0.3s ease; }
     .skill-card:hover { background: #00eaff; color: #000; transform: translateY(-5px); }
 
-    /* Projects Section */
+    /* Projects */
     #projects h2 { text-align: center; margin-bottom: 40px; }
-    .projects-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-    .project-card { background: rgba(0,0,0,0.6); border-radius: 12px; padding: 20px; width: 280px; transition: 0.3s ease; }
-    .project-card:hover { transform: translateY(-5px); }
-    .project-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-    .project-card a { display: inline-block; margin-top: 10px; padding: 8px 16px; background: #00eaff; color: #000; border-radius: 25px; font-weight: bold; }
+    .projects-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+    .project-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 15px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .project-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+    .project-card h3 { margin: 10px 0 5px 0; color: #00eaff; }
+    .project-card p { font-size: 14px; line-height: 1.5; color: #ddd; }
+    .project-card a { display: inline-block; margin-top: 10px; padding: 8px 18px; background: #00eaff; color: black; text-decoration: none; border-radius: 25px; transition: 0.3s ease; }
+    .project-card a:hover { background: white; transform: scale(1.05); }
 
-    /* Certificates Section */
+    /* Certificates */
     #certificates h2 { text-align: center; margin-bottom: 40px; }
     .certs-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .cert-card { background: rgba(0,0,0,0.6); padding: 15px 20px; border-radius: 12px; transition: 0.3s ease; }
-    .cert-card:hover { background: #00eaff; color: #000; transform: translateY(-5px); }
-    .cert-card a { font-weight: bold; }
+    .cert-card { background: rgba(255,255,255,0.05); padding: 15px 20px; border-radius: 12px; text-align: center; transition: transform 0.3s ease, background 0.3s ease; }
+    .cert-card a { color: #00eaff; text-decoration: none; font-weight: bold; }
+    .cert-card:hover { background: rgba(0,234,255,0.1); transform: translateY(-5px); }
 
-    /* Contact Section */
+    /* Contact */
     #contact { text-align: center; }
     #contact h2 { margin-bottom: 20px; }
     #contact p { color: #ccc; margin-bottom: 15px; }
@@ -70,93 +113,23 @@
     @media(max-width: 768px) {
       #hero h1 { font-size: 36px; }
       #hero h3 { font-size: 22px; }
-      .skills-grid, .projects-grid, .certs-grid { flex-direction: column; align-items: center; }
+      .skills-grid, .projects-container, .certs-grid { flex-direction: column; align-items: center; }
     }
-    .projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-}
 
-.project-card {
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 15px;
-  width: 280px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.project-card h3 {
-  margin: 10px 0 5px 0;
-  color: #00eaff;
-}
-
-.project-card p {
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.project-card a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 18px;
-  background: #00eaff;
-  color: black;
-  text-decoration: none;
-  border-radius: 25px;
-  transition: 0.3s ease;
-}
-
-.project-card a:hover {
-  background: white;
-  transform: scale(1.05);
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-.certs-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.cert-card {
-  background: rgba(255,255,255,0.1);
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.cert-card a {
-  color: #00eaff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.cert-card:hover {
-  background: rgba(0, 234, 255, 0.1);
-  transform: translateY(-5px);
-}
   </style>
 </head>
 
 <body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <!-- Hero Section -->
   <section id="hero">
@@ -164,16 +137,19 @@
     <h3>B.Tech CSE | Web Developer | Software Engineer</h3>
     <p>Passionate about building modern web applications, solving real-world problems, and contributing to impactful projects.</p>
     <a href="#projects" class="btn">View Projects</a>
+    <div class="social-icons">
+      <a href="https://github.com/joyswapnilrajparadeshi-cmd" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/joyswapnilrajparadeshi/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:joyswapnilrajparadeshi@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="container">
     <h2>About Me</h2>
-    <p>
-      I am a B.Tech CSE student with hands-on experience in web development and software engineering.  
-      I have worked on multiple live projects including Alumni Management Systems, Community Complaint Platforms, and Leave Management Systems.  
-      I enjoy solving problems with technology, learning new tools, and building products that make an impact.
-    </p>
+    <p>I am a B.Tech CSE student with hands-on experience in web development and software engineering.  
+       I have worked on multiple live projects including Alumni Management Systems, Community Complaint Platforms, and Leave Management Systems.  
+       I enjoy solving problems with technology, learning new tools, and building products that make an impact.</p>
   </section>
 
   <!-- Skills Section -->
@@ -196,79 +172,52 @@
   </section>
 
   <!-- Projects Section -->
- <section id="projects">
-  <h2>Projects</h2>
-  <div class="projects-container">
-
-    <!-- Municipal Complaint System -->
-    <div class="project-card">
-      <img src="images/municipal.png" alt="Municipal Complaint System">
-      <h3>Municipal Complaint System</h3>
-      <p>A system to manage citizen complaints efficiently with admin and user roles.</p>
-      <a href="https://municipal-complaint.kesug.com" target="_blank">Live Demo</a>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <img src="images/municipal.png" alt="Municipal Complaint System">
+        <h3>Municipal Complaint System</h3>
+        <p>A system to manage citizen complaints efficiently with admin and user roles.</p>
+        <a href="https://municipal-complaint.kesug.com" target="_blank">Live Demo</a>
+      </div>
+      <div class="project-card">
+        <img src="images/leave.png" alt="Leave Management System">
+        <h3>Leave Management System</h3>
+        <p>Automated leave requests, approvals, and tracking for employees.</p>
+        <a href="https://leave-management.kesug.com" target="_blank">Live Demo</a>
+      </div>
+      <div class="project-card">
+        <img src="images/community.png" alt="Smart Community Complaint System">
+        <h3>Smart Community Complaint System</h3>
+        <p>Advanced complaint system with notifications, analytics, and dashboards.</p>
+        <a href="https://sih-project.kesug.com" target="_blank">Live Demo</a>
+      </div>
+      <div class="project-card">
+        <img src="images/alumni.png" alt="Alumni Management System">
+        <h3>Alumni Management System</h3>
+        <p>Manage alumni, events, donations, and communications effectively.</p>
+        <a href="https://alumni-management.kesug.com" target="_blank">Live Demo</a>
+      </div>
     </div>
-
-    <!-- Leave Management System -->
-    <div class="project-card">
-      <img src="images/leave.png" alt="Leave Management System">
-      <h3>Leave Management System</h3>
-      <p>Automated leave requests, approvals, and tracking for employees.</p>
-      <a href="https://leave-management.kesug.com" target="_blank">Live Demo</a>
-    </div>
-
-    <!-- Smart Community Complaint System -->
-    <div class="project-card">
-      <img src="images/community.png" alt="Smart Community Complaint System">
-      <h3>Smart Community Complaint System</h3>
-      <p>Advanced complaint system with notifications, analytics, and dashboards.</p>
-      <a href="https://sih-project.kesug.com" target="_blank">Live Demo</a>
-    </div>
-
-    <!-- Alumni Management System -->
-    <div class="project-card">
-      <img src="images/alumni.png" alt="Alumni Management System">
-      <h3>Alumni Management System</h3>
-      <p>Manage alumni, events, donations, and communications effectively.</p>
-      <a href="https://alumni-management.kesug.com" target="_blank">Live Demo</a>
-    </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- Certificates Section -->
-  <!-- Certificates Section -->
-<section id="certificates" class="container">
-  <h2>Certificates</h2>
-  <div class="certs-grid">
-    <div class="cert-card">
-      <a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">Cybersecurity Fundamentals</a>
+  <section id="certificates" class="container">
+    <h2>Certificates</h2>
+    <div class="certs-grid">
+      <div class="cert-card"><a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">Cybersecurity Fundamentals</a></div>
+      <div class="cert-card"><a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">Fundamentals of Cryptography</a></div>
+      <div class="cert-card"><a href="certificates/python-cryptography-case-study.pdf" target="_blank">Python Case Study – Cryptography</a></div>
+      <div class="cert-card"><a href="certificates/introduction-to-pki.pdf" target="_blank">Introduction to PKI</a></div>
+      <div class="cert-card"><a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">GFG – Aptitude & Reasoning</a></div>
+      <div class="cert-card"><a href="certificates/google-ai-for-everyone.pdf" target="_blank">Google AI for Everyone</a></div>
+      <div class="cert-card"><a href="certificates/ibm-prompt-engineering.pdf" target="_blank">IBM – Prompt Engineering</a></div>
+      <div class="cert-card"><a href="certificates/introduction-to-chatgpt.pdf" target="_blank">Introduction to ChatGPT</a></div>
+      <div class="cert-card"><a href="certificates/cryptography-in-it-security.pdf" target="_blank">Cryptography in IT Security & Hacking</a></div>
     </div>
-    <div class="cert-card">
-      <a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">Fundamentals of Cryptography</a>
-    </div>
-    <div class="cert-card">
-      <a href="certificates/python-cryptography-case-study.pdf" target="_blank">Python Case Study – Cryptography</a>
-    </div>
-    <div class="cert-card">
-      <a href="certificates/introduction-to-pki.pdf" target="_blank">Introduction to PKI</a>
-    </div>
-    <div class="cert-card">
-      <a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">GFG – Aptitude & Reasoning</a>
-    </div>
-    <div class="cert-card">
-      <a href="certificates/google-ai-for-everyone.pdf" target="_blank">Google AI for Everyone</a>
-    </div>
-    <div class="cert-card">
-      <a href="certificates/ibm-prompt-engineering.pdf" target="_blank">IBM – Prompt Engineering</a>
-    </div>
-    <div class="cert-card">
-      <a href="certificates/introduction-to-chatgpt.pdf" target="_blank">Introduction to ChatGPT</a>
-    </div>
-    <div class="cert-card">
-      <a href="certificates/cryptography-in-it-security.pdf" target="_blank">Cryptography in IT Security & Hacking</a>
-    </div>
-  </div>
-</section>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="container">
     <h2>Contact Me</h2>

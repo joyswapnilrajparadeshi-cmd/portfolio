@@ -76,19 +76,69 @@
     #about p { max-width: 800px; margin: auto; color: #ddd; line-height: 1.8; text-align: center; }
 
     /* Skills */
-    #skills .skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .skill-card {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(8px);
-      padding: 20px;
-      border-radius: 20px;
-      text-align: center;
-      width: 120px;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .skill-card img { width: 50px; height: 50px; margin-bottom: 10px; }
-    .skill-card p { color: #00eaff; font-weight: bold; }
-    .skill-card:hover { background: rgba(0,234,255,0.15); transform: translateY(-5px) scale(1.05); }
+   /* Skills - Modern Animated */
+#skills .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.skill-card {
+  background: linear-gradient(135deg, rgba(0,234,255,0.15), rgba(0,234,255,0.05));
+  backdrop-filter: blur(12px);
+  padding: 25px;
+  border-radius: 25px;
+  text-align: center;
+  width: 140px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 234, 255, 0.2);
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 5px #00eaff);
+  transition: transform 0.5s ease;
+}
+
+.skill-card p {
+  color: #00eaff;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* Hover Animation */
+.skill-card:hover {
+  transform: translateY(-10px) scale(1.1);
+  box-shadow: 0 15px 30px rgba(0, 234, 255, 0.4);
+  background: linear-gradient(135deg, rgba(0,234,255,0.3), rgba(0,234,255,0.1));
+}
+
+.skill-card:hover img {
+  transform: rotate(15deg) scale(1.15);
+}
+
+/* Floating Animation */
+@keyframes floatSkill {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.skill-card img {
+  animation: floatSkill 3s ease-in-out infinite;
+}
 
     /* Projects */
     .projects-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
@@ -207,22 +257,22 @@
 
   <!-- Skills Section -->
   <section id="skills" class="container" data-aos="fade-up">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card"><img src="images/c.jpg" alt="C" /><p>C</p></div>
-      <div class="skill-card"><img src="images/java.png" alt="Java" /><p>Java</p></div>
-      <div class="skill-card"><img src="images/python.png" alt="Python" /><p>Python</p></div>
-      <div class="skill-card"><img src="images/html.png" alt="HTML" /><p>HTML</p></div>
-      <div class="skill-card"><img src="images/css.png" alt="CSS" /><p>CSS</p></div>
-      <div class="skill-card"><img src="images/js.png" alt="JavaScript" /><p>JavaScript</p></div>
-      <div class="skill-card"><img src="images/react.png" alt="React" /><p>React</p></div>
-      <div class="skill-card"><img src="images/node.jpg" alt="Node.js" /><p>Node.js</p></div>
-      <div class="skill-card"><img src="images/express.png" alt="Express" /><p>Express</p></div>
-      <div class="skill-card"><img src="images/php.jpg" alt="PHP" /><p>PHP</p></div>
-      <div class="skill-card"><img src="images/powerbi.jpg" alt="Power BI" /><p>Power BI</p></div>
-      <div class="skill-card"><img src="images/excel.jpg" alt="Excel" /><p>Excel</p></div>
-    </div>
-  </section>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card"><img src="images/c.jpg" alt="C" /><p>C</p></div>
+    <div class="skill-card"><img src="images/java.png" alt="Java" /><p>Java</p></div>
+    <div class="skill-card"><img src="images/python.png" alt="Python" /><p>Python</p></div>
+    <div class="skill-card"><img src="images/html.png" alt="HTML" /><p>HTML</p></div>
+    <div class="skill-card"><img src="images/css.png" alt="CSS" /><p>CSS</p></div>
+    <div class="skill-card"><img src="images/js.png" alt="JavaScript" /><p>JavaScript</p></div>
+    <div class="skill-card"><img src="images/react.png" alt="React" /><p>React</p></div>
+    <div class="skill-card"><img src="images/node.jpg" alt="Node.js" /><p>Node.js</p></div>
+    <div class="skill-card"><img src="images/express.png" alt="Express" /><p>Express</p></div>
+    <div class="skill-card"><img src="images/php.jpg" alt="PHP" /><p>PHP</p></div>
+    <div class="skill-card"><img src="images/powerbi.jpg" alt="Power BI" /><p>Power BI</p></div>
+    <div class="skill-card"><img src="images/excel.jpg" alt="Excel" /><p>Excel</p></div>
+  </div>
+</section>
 
   <!-- Projects Section -->
   <section id="projects" data-aos="fade-up">
@@ -310,6 +360,19 @@
       backDelay: 2000,
       loop: true
     });
+    // Skill cards hover glow effect
+  const skillCards = document.querySelectorAll('.skill-card');
+  skillCards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,234,255,0.25), rgba(0,234,255,0.05))`;
+    });
+    card.addEventListener('mouseleave', e => {
+      card.style.background = 'linear-gradient(135deg, rgba(0,234,255,0.15), rgba(0,234,255,0.05))';
+    });
+  });
   </script>
 </body>
 </html>

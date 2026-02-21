@@ -148,7 +148,56 @@
   background: rgba(0,234,255,0.1);
   transform: translateY(-5px);
 }
+.cert-map {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin-top: 50px;
+}
 
+.node {
+  position: absolute;
+  background: #00eaff;
+  color: #000;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-align: center;
+  min-width: 180px;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.node.central {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #e67e22;
+}
+
+.node i {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.node p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Hover Effect */
+.node:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* SVG Connections */
+.connections {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
   </style>
 </head>
 
@@ -272,46 +321,63 @@
   </section>
 
  <!-- Certificates Section -->
-<!-- Certificates Section -->
 <section id="certificates" class="container">
-  <h2>Certificates</h2>
-  <div class="certs-grid">
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">Cybersecurity Fundamentals</a></p>
+  <h2>Certificates Map</h2>
+
+  <div class="cert-map">
+    <!-- Central Node -->
+    <div class="node central">Certifications</div>
+
+    <!-- First Level Nodes -->
+    <div class="node level1" style="top: -150px; left: -200px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>Cybersecurity Fundamentals</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">Fundamentals of Cryptography</a></p>
+    <div class="node level1" style="top: -150px; left: 200px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>Fundamentals of Cryptography</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/python-cryptography-case-study.pdf" target="_blank">Python Case Study – Cryptography</a></p>
+    <div class="node level1" style="top: 0px; left: 300px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>Python Case Study – Cryptography</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/introduction-to-pki.pdf" target="_blank">Introduction to PKI</a></p>
+    <div class="node level1" style="top: 150px; left: -300px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>Introduction to PKI</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">GFG – Aptitude & Reasoning</a></p>
+    <div class="node level1" style="top: 200px; left: 0px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>GFG – Aptitude & Reasoning</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/google-ai-for-everyone.pdf" target="_blank">Google AI for Everyone</a></p>
+    <div class="node level1" style="top: 150px; left: 300px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>Google AI for Everyone</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/ibm-prompt-engineering.pdf" target="_blank">IBM – Prompt Engineering</a></p>
+    <div class="node level1" style="top: 0px; left: -300px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>IBM – Prompt Engineering</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/introduction-to-chatgpt.pdf" target="_blank">Introduction to ChatGPT</a></p>
+    <div class="node level1" style="top: -150px; left: 0px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>Introduction to ChatGPT</p>
     </div>
-    <div class="cert-card">
-      <i class="fas fa-file-pdf" style="font-size:50px; color:#00eaff;"></i>
-      <p><a href="certificates/cryptography-in-it-security.pdf" target="_blank">Cryptography in IT Security & Hacking</a></p>
+    <div class="node level1" style="top: 250px; left: 200px;">
+      <i class="fas fa-file-pdf"></i>
+      <p>Cryptography in IT Security & Hacking</p>
     </div>
+
+    <!-- Connecting lines using SVG -->
+    <svg class="connections">
+      <line x1="50%" y1="50%" x2="25%" y2="20%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="75%" y2="20%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="85%" y2="50%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="15%" y2="80%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="50%" y2="90%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="85%" y2="80%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="15%" y2="50%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="50%" y2="15%" stroke="#00eaff" stroke-width="2"/>
+      <line x1="50%" y1="50%" x2="75%" y2="95%" stroke="#00eaff" stroke-width="2"/>
+    </svg>
   </div>
 </section>
   <!-- Contact Section -->

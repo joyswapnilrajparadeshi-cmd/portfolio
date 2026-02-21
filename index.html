@@ -207,7 +207,105 @@
   color: #000;
   transform: scale(1.05);
 }
+/* Certificate Tree with Connecting Lines */
 
+.cert-tree-wrap {
+  position: relative;
+  margin-top: 60px;
+}
+
+.cert-root {
+  background: #e67e22;
+  color: #000;
+  padding: 14px 50px;
+  border-radius: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+  width: fit-content;
+  box-shadow: 0 0 25px rgba(230,126,34,0.6);
+}
+
+.cert-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+  position: relative;
+}
+
+/* Connecting vertical line */
+.cert-branches::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 60px;
+  background: linear-gradient(#00eaff, transparent);
+}
+
+/* Certificate Card */
+.cert-box {
+  background: rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: 0.4s ease;
+  position: relative;
+}
+
+.cert-box:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* Horizontal connector */
+.cert-box::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(#00eaff, transparent);
+}
+
+/* Title */
+.cert-box h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #00eaff;
+}
+
+/* Certificate links */
+.cert-box a {
+  display: block;
+  margin: 8px 0;
+  padding: 10px 16px;
+  border-radius: 25px;
+  background: rgba(0,0,0,0.45);
+  color: #00eaff;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.cert-box a:hover {
+  background: #00eaff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Mobile */
+@media(max-width: 768px) {
+  .cert-branches::before,
+  .cert-box::before {
+    display: none;
+  }
+}
   </style>
 </head>
 
@@ -332,53 +430,37 @@
 
  <!-- Certificates Section -->
 <section id="certificates" class="container">
-  <h2>Certificates</h2>
+  <h2>Certifications</h2>
 
-  <div class="cert-tree">
-    <div class="tree-root">Certifications</div>
+  <div class="cert-tree-wrap">
 
-    <div class="tree-branches">
+    <div class="cert-root">Certifications</div>
 
-      <div class="tree-box">
+    <div class="cert-branches">
+
+      <div class="cert-box">
         <h3>Cybersecurity</h3>
-        <a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">
-          Cybersecurity Fundamentals
-        </a>
-        <a href="certificates/cryptography-in-it-security.pdf" target="_blank">
-          Cryptography in IT Security & Hacking
-        </a>
+        <a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">Cybersecurity Fundamentals</a>
+        <a href="certificates/cryptography-in-it-security.pdf" target="_blank">Cryptography in IT Security & Hacking</a>
       </div>
 
-      <div class="tree-box">
+      <div class="cert-box">
         <h3>Cryptography</h3>
-        <a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">
-          Fundamentals of Cryptography
-        </a>
-        <a href="certificates/python-cryptography-case-study.pdf" target="_blank">
-          Python Case Study – Cryptography
-        </a>
-        <a href="certificates/introduction-to-pki.pdf" target="_blank">
-          Introduction to PKI
-        </a>
+        <a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">Fundamentals of Cryptography</a>
+        <a href="certificates/python-cryptography-case-study.pdf" target="_blank">Python Case Study – Cryptography</a>
+        <a href="certificates/introduction-to-pki.pdf" target="_blank">Introduction to PKI</a>
       </div>
 
-      <div class="tree-box">
+      <div class="cert-box">
         <h3>AI & Aptitude</h3>
-        <a href="certificates/google-ai-for-everyone.pdf" target="_blank">
-          Google AI for Everyone
-        </a>
-        <a href="certificates/ibm-prompt-engineering.pdf" target="_blank">
-          IBM – Prompt Engineering
-        </a>
-        <a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">
-          GFG – Aptitude & Reasoning
-        </a>
-        <a href="certificates/introduction-to-chatgpt.pdf" target="_blank">
-          Introduction to ChatGPT
-        </a>
+        <a href="certificates/google-ai-for-everyone.pdf" target="_blank">Google AI for Everyone</a>
+        <a href="certificates/ibm-prompt-engineering.pdf" target="_blank">IBM – Prompt Engineering</a>
+        <a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">GFG – Aptitude & Reasoning</a>
+        <a href="certificates/introduction-to-chatgpt.pdf" target="_blank">Introduction to ChatGPT</a>
       </div>
 
     </div>
+
   </div>
 </section>
 

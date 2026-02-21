@@ -65,40 +65,65 @@ h1, h2, h3 { color: #00eaff; }
 
 /* ------------------ Skills ------------------ */
 #skills h2 { text-align: center; margin-bottom: 40px; }
-.skills-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.skill-card {
-  background: rgba(0,0,0,0.6); padding: 20px 25px; border-radius: 12px; width: 140px;
-  text-align: center; font-weight: 600; transition: 0.3s ease;
+.skills-map {
+  position: relative; width: 400px; height: 400px; margin: 40px auto;
 }
-.skill-card:hover { background: #00eaff; color: #000; transform: translateY(-5px); }
+.skill-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;
+}
+.skill-center img { width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 0 20px #00eaff; }
+.skill-center p { color: #00eaff; font-weight: bold; margin-top: 5px; }
 
-/* ------------------ Projects ------------------ */
-#projects h2 { text-align: center; margin-bottom: 40px; }
-.projects-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-.project-card {
-  background: rgba(255,255,255,0.05); border-radius: 12px; padding: 15px;
-  width: 280px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;
+.skill-orbit {
+  position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; text-align: center;
+  transform-origin: center; transition: transform 0.3s ease;
 }
-.project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-.project-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-.project-card h3 { margin: 10px 0 5px 0; color: #00eaff; }
-.project-card p { font-size: 14px; line-height: 1.5; color: #ddd; }
-.project-card a {
-  display: inline-block; margin-top: 10px; padding: 8px 18px;
-  background: #00eaff; color: black; text-decoration: none; border-radius: 25px;
-  transition: 0.3s ease;
-}
-.project-card a:hover { background: white; transform: scale(1.05); }
+.skill-orbit img { width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 0 15px #00eaff; }
+.skill-orbit p { color: #00eaff; font-size: 12px; margin-top: 5px; }
+.skill-orbit:hover { transform: scale(1.2) translateY(-10px); }
 
 /* ------------------ Certificates ------------------ */
 #certificates h2 { text-align: center; margin-bottom: 40px; }
-.certs-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-.cert-card {
-  background: rgba(255,255,255,0.05); padding: 15px 20px; border-radius: 12px;
-  text-align: center; transition: transform 0.3s ease, background 0.3s ease;
+.certs-map {
+  position: relative; width: 400px; height: 400px; margin: 40px auto;
 }
-.cert-card a { color: #00eaff; text-decoration: none; font-weight: bold; }
-.cert-card:hover { background: rgba(0,234,255,0.1); transform: translateY(-5px); }
+.cert-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;
+}
+.cert-center img { width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 0 20px #00eaff; }
+.cert-center p { color: #00eaff; font-weight: bold; margin-top: 5px; }
+
+.cert-orbit {
+  position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; text-align: center;
+  transform-origin: center; transition: transform 0.3s ease;
+}
+.cert-orbit img { width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 0 15px #00eaff; }
+.cert-orbit p { color: #00eaff; font-size: 12px; margin-top: 5px; }
+.cert-orbit:hover { transform: scale(1.2) translateY(-10px); }
+
+/* ------------------ Fixed Orbit Layout ------------------ */
+.skill-orbit:nth-child(1) { transform: rotate(0deg) translateX(160px); }
+.skill-orbit:nth-child(2) { transform: rotate(36deg) translateX(160px); }
+.skill-orbit:nth-child(3) { transform: rotate(72deg) translateX(160px); }
+.skill-orbit:nth-child(4) { transform: rotate(108deg) translateX(160px); }
+.skill-orbit:nth-child(5) { transform: rotate(144deg) translateX(160px); }
+.skill-orbit:nth-child(6) { transform: rotate(180deg) translateX(160px); }
+.skill-orbit:nth-child(7) { transform: rotate(216deg) translateX(160px); }
+.skill-orbit:nth-child(8) { transform: rotate(252deg) translateX(160px); }
+.skill-orbit:nth-child(9) { transform: rotate(288deg) translateX(160px); }
+.skill-orbit:nth-child(10){ transform: rotate(324deg) translateX(160px); }
+.skill-orbit:nth-child(11){ transform: rotate(360deg) translateX(160px); }
+.skill-orbit:nth-child(12){ transform: rotate(396deg) translateX(160px); }
+
+.cert-orbit:nth-child(1) { transform: rotate(0deg) translateX(160px); }
+.cert-orbit:nth-child(2) { transform: rotate(40deg) translateX(160px); }
+.cert-orbit:nth-child(3) { transform: rotate(80deg) translateX(160px); }
+.cert-orbit:nth-child(4) { transform: rotate(120deg) translateX(160px); }
+.cert-orbit:nth-child(5) { transform: rotate(160deg) translateX(160px); }
+.cert-orbit:nth-child(6) { transform: rotate(200deg) translateX(160px); }
+.cert-orbit:nth-child(7) { transform: rotate(240deg) translateX(160px); }
+.cert-orbit:nth-child(8) { transform: rotate(280deg) translateX(160px); }
+.cert-orbit:nth-child(9) { transform: rotate(320deg) translateX(160px); }
 
 /* ------------------ Contact ------------------ */
 #contact { text-align: center; }
@@ -117,64 +142,7 @@ footer { text-align: center; padding: 20px 0; color: #aaa; background: rgba(0,0,
 @media(max-width: 768px) {
   #hero h1 { font-size: 36px; }
   #hero h3 { font-size: 22px; }
-  .skills-grid, .projects-container, .certs-grid { flex-direction: column; align-items: center; }
-}
-
-/* ------------------ Skills Radar Map ------------------ */
-.skills-map, .certs-map {
-  position: relative; width: 400px; height: 400px; margin: 40px auto;
-}
-.skill-center, .cert-center {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;
-}
-.skill-center img, .cert-center img {
-  width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 0 20px #00eaff;
-}
-.skill-center p, .cert-center p { color: #00eaff; font-weight: bold; margin-top: 5px; }
-
-.skill-orbit, .cert-orbit {
-  position: absolute; top: 50%; left: 50%;
-  width: 60px; height: 60px; text-align: center;
-  transition: transform 0.3s ease; 
-}
-.skill-orbit img, .cert-orbit img {
-  width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 0 15px #00eaff;
-}
-.skill-orbit p, .cert-orbit p { color: #00eaff; font-size: 12px; margin-top: 5px; }
-.skill-orbit:hover, .cert-orbit:hover { transform: scale(1.2) translateY(-10px); }
-
-/* ------------------ Skills Rotation ------------------ */
-.skill-orbit { animation: orbit-rotate 20s linear infinite; transform-origin: 0px -160px; }
-.cert-orbit { animation: orbit-rotate 25s linear infinite reverse; transform-origin: 0px -160px; }
-
-/* CSS Variables for orbit indexing */
-.skill-orbit:nth-child(1){--i:0} .skill-orbit:nth-child(2){--i:1}
-.skill-orbit:nth-child(3){--i:2} .skill-orbit:nth-child(4){--i:3}
-.skill-orbit:nth-child(5){--i:4} .skill-orbit:nth-child(6){--i:5}
-.skill-orbit:nth-child(7){--i:6} .skill-orbit:nth-child(8){--i:7}
-.skill-orbit:nth-child(9){--i:8} .skill-orbit:nth-child(10){--i:9}
-
-.cert-orbit:nth-child(1){--i:0} .cert-orbit:nth-child(2){--i:1}
-.cert-orbit:nth-child(3){--i:2} .cert-orbit:nth-child(4){--i:3}
-.cert-orbit:nth-child(5){--i:4} .cert-orbit:nth-child(6){--i:5}
-.cert-orbit:nth-child(7){--i:6} .cert-orbit:nth-child(8){--i:7}
-.cert-orbit:nth-child(9){--i:8}
-
-/* Apply rotation using variable */
-.skill-orbit { transform: rotate(calc(var(--i) * 36deg)) translateX(160px); }
-.cert-orbit { transform: rotate(calc(var(--i) * 40deg)) translateX(160px); }
-
-/* ------------------ Orbit Lines ------------------ */
-.skill-orbit::before, .cert-orbit::before {
-  content: ""; position: absolute; top: 50%; left: 50%;
-  width: 2px; height: 160px; background: rgba(0,234,255,0.3);
-  transform-origin: top center; z-index: -1;
-}
-
-/* ------------------ Orbit Animation ------------------ */
-@keyframes orbit-rotate {
-  0% { transform: rotate(0deg) translateX(160px); }
-  100% { transform: rotate(360deg) translateX(160px); }
+  .skills-map, .certs-map { width: 90%; height: 350px; }
 }
 </style>
 </head>

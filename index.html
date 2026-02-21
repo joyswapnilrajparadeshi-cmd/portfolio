@@ -321,67 +321,69 @@
   </section>
 
  <!-- Certificates Section -->
-<!-- Certificates Section -->
 <section id="certificates" class="container">
   <h2>Certificates Map</h2>
-
   <div class="cert-map">
-    <!-- Central Node -->
     <div class="node central">Certifications</div>
 
     <!-- Certificate Nodes -->
-    <div class="node" style="top: 10%; left: 50%; transform: translate(-50%, 0);">
+    <div class="node" data-angle="0">
       <i class="fas fa-file-pdf"></i>
       <p>Cybersecurity Fundamentals</p>
     </div>
-    <div class="node" style="top: 25%; left: 75%; transform: translate(-50%, -50%);">
+    <div class="node" data-angle="40">
       <i class="fas fa-file-pdf"></i>
       <p>Fundamentals of Cryptography</p>
     </div>
-    <div class="node" style="top: 50%; left: 90%; transform: translate(-50%, -50%);">
+    <div class="node" data-angle="80">
       <i class="fas fa-file-pdf"></i>
       <p>Python Case Study – Cryptography</p>
     </div>
-    <div class="node" style="top: 75%; left: 75%; transform: translate(-50%, -50%);">
+    <div class="node" data-angle="120">
       <i class="fas fa-file-pdf"></i>
       <p>Google AI for Everyone</p>
     </div>
-    <div class="node" style="top: 90%; left: 50%; transform: translate(-50%, -100%);">
+    <div class="node" data-angle="160">
       <i class="fas fa-file-pdf"></i>
       <p>Cryptography in IT Security & Hacking</p>
     </div>
-    <div class="node" style="top: 75%; left: 25%; transform: translate(-50%, -50%);">
+    <div class="node" data-angle="200">
       <i class="fas fa-file-pdf"></i>
       <p>GFG – Aptitude & Reasoning</p>
     </div>
-    <div class="node" style="top: 50%; left: 10%; transform: translate(-50%, -50%);">
+    <div class="node" data-angle="240">
       <i class="fas fa-file-pdf"></i>
       <p>IBM – Prompt Engineering</p>
     </div>
-    <div class="node" style="top: 25%; left: 25%; transform: translate(-50%, -50%);">
+    <div class="node" data-angle="280">
       <i class="fas fa-file-pdf"></i>
       <p>Introduction to PKI</p>
     </div>
-    <div class="node" style="top: 10%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="node" data-angle="320">
       <i class="fas fa-file-pdf"></i>
       <p>Introduction to ChatGPT</p>
     </div>
-
-    <!-- SVG connections -->
-    <svg class="connections">
-      <!-- Connect central to each node -->
-      <line x1="50%" y1="50%" x2="50%" y2="10%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="75%" y2="25%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="90%" y2="50%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="75%" y2="75%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="50%" y2="90%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="25%" y2="75%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="10%" y2="50%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="25%" y2="25%" stroke="#00eaff" stroke-width="2"/>
-      <line x1="50%" y1="50%" x2="50%" y2="10%" stroke="#00eaff" stroke-width="2"/>
-    </svg>
   </div>
 </section>
+
+<script>
+  // Circular layout positioning
+  const nodes = document.querySelectorAll('.cert-map .node:not(.central)');
+  const center = document.querySelector('.cert-map .central');
+
+  const radius = 250; // distance from center
+  const centerX = center.offsetLeft + center.offsetWidth / 2;
+  const centerY = center.offsetTop + center.offsetHeight / 2;
+
+  nodes.forEach(node => {
+    const angle = node.getAttribute('data-angle') * (Math.PI / 180); // convert to rad
+    const x = centerX + radius * Math.cos(angle) - node.offsetWidth / 2;
+    const y = centerY + radius * Math.sin(angle) - node.offsetHeight / 2;
+    node.style.left = `${x}px`;
+    node.style.top = `${y}px`;
+    node.style.position = 'absolute';
+  });
+</script>
   <!-- Contact Section -->
   <section id="contact" class="container">
     <h2>Contact Me</h2>

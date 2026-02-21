@@ -115,6 +115,139 @@
       #hero h3 { font-size: 22px; }
       .skills-grid, .projects-container, .certs-grid { flex-direction: column; align-items: center; }
     }
+    .skills-map {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 40px auto;
+}
+
+.skill-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.skill-center img {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+.skill-center p {
+  color: #00eaff;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.skill-orbit {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 80px; height: 80px;
+  text-align: center;
+  animation: orbit-rotate 20s linear infinite;
+  transform-origin: -160px center;
+  transition: transform 0.3s ease;
+}
+
+.skill-orbit img {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00eaff;
+}
+
+.skill-orbit p {
+  color: #00eaff;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.skill-orbit:hover {
+  transform: scale(1.2) translateX(10px);
+}
+
+@keyframes orbit-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Initial rotation for each skill */
+.skill-orbit:nth-child(1) { transform: rotate(0deg) translateX(160px); }
+.skill-orbit:nth-child(2) { transform: rotate(36deg) translateX(160px); }
+.skill-orbit:nth-child(3) { transform: rotate(72deg) translateX(160px); }
+.skill-orbit:nth-child(4) { transform: rotate(108deg) translateX(160px); }
+.skill-orbit:nth-child(5) { transform: rotate(144deg) translateX(160px); }
+.skill-orbit:nth-child(6) { transform: rotate(180deg) translateX(160px); }
+.skill-orbit:nth-child(7) { transform: rotate(216deg) translateX(160px); }
+.skill-orbit:nth-child(8) { transform: rotate(252deg) translateX(160px); }
+.skill-orbit:nth-child(9) { transform: rotate(288deg) translateX(160px); }
+.skill-orbit:nth-child(10){ transform: rotate(324deg) translateX(160px); }
+
+/* Certificates Radar Map */
+.certs-map {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 40px auto;
+}
+
+.cert-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.cert-center img {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #00eaff;
+}
+
+.cert-center p {
+  color: #00eaff;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.cert-orbit {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100px; height: 80px;
+  text-align: center;
+  animation: orbit-rotate 25s linear infinite reverse;
+  transform-origin: -160px center;
+  transition: transform 0.3s ease;
+}
+
+.cert-orbit img {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00eaff;
+}
+
+.cert-orbit p {
+  color: #00eaff;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.cert-orbit:hover {
+  transform: scale(1.2) translateX(10px);
+}
+
+/* Initial rotation for certificates */
+.cert-orbit:nth-child(1) { transform: rotate(0deg) translateX(160px); }
+.cert-orbit:nth-child(2) { transform: rotate(40deg) translateX(160px); }
+.cert-orbit:nth-child(3) { transform: rotate(80deg) translateX(160px); }
+.cert-orbit:nth-child(4) { transform: rotate(120deg) translateX(160px); }
+.cert-orbit:nth-child(5) { transform: rotate(160deg) translateX(160px); }
+.cert-orbit:nth-child(6) { transform: rotate(200deg) translateX(160px); }
+.cert-orbit:nth-child(7) { transform: rotate(240deg) translateX(160px); }
+.cert-orbit:nth-child(8) { transform: rotate(280deg) translateX(160px); }
+.cert-orbit:nth-child(9) { transform: rotate(320deg) translateX(160px); }
+
 
   </style>
 </head>
@@ -153,23 +286,30 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="container">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card">C</div>
-      <div class="skill-card">Java</div>
-      <div class="skill-card">Python</div>
-      <div class="skill-card">HTML</div>
-      <div class="skill-card">CSS</div>
-      <div class="skill-card">JavaScript</div>
-      <div class="skill-card">React</div>
-      <div class="skill-card">Node.js</div>
-      <div class="skill-card">Express</div>
-      <div class="skill-card">PHP</div>
-      <div class="skill-card">Power BI</div>
-      <div class="skill-card">Excel</div>
+ <section id="skills" class="container">
+  <h2>Skills</h2>
+  <div class="skills-map">
+    <!-- Center -->
+    <div class="skill-center">
+      <img src="images/skills-center.png" alt="My Skills">
+      <p>My Skills</p>
     </div>
-  </section>
+
+    <!-- Orbiting Skills -->
+    <div class="skill-orbit"><img src="images/c.png" alt="C"><p>C</p></div>
+    <div class="skill-orbit"><img src="images/java.png" alt="Java"><p>Java</p></div>
+    <div class="skill-orbit"><img src="images/python.png" alt="Python"><p>Python</p></div>
+    <div class="skill-orbit"><img src="images/html.png" alt="HTML"><p>HTML</p></div>
+    <div class="skill-orbit"><img src="images/css.png" alt="CSS"><p>CSS</p></div>
+    <div class="skill-orbit"><img src="images/js.png" alt="JavaScript"><p>JS</p></div>
+    <div class="skill-orbit"><img src="images/react.png" alt="React"><p>React</p></div>
+    <div class="skill-orbit"><img src="images/node.png" alt="Node.js"><p>Node.js</p></div>
+    <div class="skill-orbit"><img src="images/express.png" alt="Express"><p>Express</p></div>
+    <div class="skill-orbit"><img src="images/php.png" alt="PHP"><p>PHP</p></div>
+    <div class="skill-orbit"><img src="images/powerbi.png" alt="Power BI"><p>Power BI</p></div>
+    <div class="skill-orbit"><img src="images/excel.png" alt="Excel"><p>Excel</p></div>
+  </div>
+</section>
 
   <!-- Projects Section -->
   <section id="projects">
@@ -204,19 +344,26 @@
 
   <!-- Certificates Section -->
   <section id="certificates" class="container">
-    <h2>Certificates</h2>
-    <div class="certs-grid">
-      <div class="cert-card"><a href="certificates/cybersecurity-fundamentals.pdf" target="_blank">Cybersecurity Fundamentals</a></div>
-      <div class="cert-card"><a href="certificates/fundamentals-of-cryptography.pdf" target="_blank">Fundamentals of Cryptography</a></div>
-      <div class="cert-card"><a href="certificates/python-cryptography-case-study.pdf" target="_blank">Python Case Study – Cryptography</a></div>
-      <div class="cert-card"><a href="certificates/introduction-to-pki.pdf" target="_blank">Introduction to PKI</a></div>
-      <div class="cert-card"><a href="certificates/gfg-aptitude-reasoning.pdf" target="_blank">GFG – Aptitude & Reasoning</a></div>
-      <div class="cert-card"><a href="certificates/google-ai-for-everyone.pdf" target="_blank">Google AI for Everyone</a></div>
-      <div class="cert-card"><a href="certificates/ibm-prompt-engineering.pdf" target="_blank">IBM – Prompt Engineering</a></div>
-      <div class="cert-card"><a href="certificates/introduction-to-chatgpt.pdf" target="_blank">Introduction to ChatGPT</a></div>
-      <div class="cert-card"><a href="certificates/cryptography-in-it-security.pdf" target="_blank">Cryptography in IT Security & Hacking</a></div>
+  <h2>Certificates</h2>
+  <div class="certs-map">
+    <!-- Center -->
+    <div class="cert-center">
+      <img src="images/cert-center.png" alt="Certificates">
+      <p>Certificates</p>
     </div>
-  </section>
+
+    <!-- Orbiting Certificates -->
+    <div class="cert-orbit"><img src="images/cybersecurity.png" alt="Cybersecurity"><p>Cybersecurity Fundamentals</p></div>
+    <div class="cert-orbit"><img src="images/cryptography.png" alt="Cryptography"><p>Fundamentals of Cryptography</p></div>
+    <div class="cert-orbit"><img src="images/python.png" alt="Python"><p>Python Cryptography</p></div>
+    <div class="cert-orbit"><img src="images/pki.png" alt="PKI"><p>Introduction to PKI</p></div>
+    <div class="cert-orbit"><img src="images/gfg.png" alt="GFG"><p>GFG Aptitude & Reasoning</p></div>
+    <div class="cert-orbit"><img src="images/google-ai.png" alt="Google AI"><p>Google AI for Everyone</p></div>
+    <div class="cert-orbit"><img src="images/ibm.png" alt="IBM"><p>IBM Prompt Engineering</p></div>
+    <div class="cert-orbit"><img src="images/chatgpt.png" alt="ChatGPT"><p>Introduction to ChatGPT</p></div>
+    <div class="cert-orbit"><img src="images/cryptography-it.png" alt="IT Security"><p>Cryptography in IT Security & Hacking</p></div>
+  </div>
+</section>
 
   <!-- Contact Section -->
   <section id="contact" class="container">

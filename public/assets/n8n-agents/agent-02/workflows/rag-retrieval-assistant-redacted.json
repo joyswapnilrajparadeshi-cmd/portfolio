@@ -1,0 +1,61 @@
+{
+  "system": "RAG Knowledge Base Assistant",
+  "workflow": {
+    "name": "RAG Retrieval Assistant - Redacted Portfolio Version",
+    "nodes": [
+      {
+        "name": "Chat Trigger",
+        "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+        "parameters": {},
+        "webhookId": "REDACTED_WEBHOOK_ID"
+      },
+      {
+        "name": "AI Agent",
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "parameters": {
+          "options": {
+            "systemMessage": "You are a RAG assistant. Always use the Qdrant knowledge base tool before answering. Answer only from retrieved context. If the answer is not found, say: I could not find this in the knowledge base."
+          }
+        }
+      },
+      {
+        "name": "OpenAI Chat Model",
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "parameters": {
+          "model": {
+            "mode": "list",
+            "value": "gpt-5-mini"
+          }
+        },
+        "credentials": {
+          "redacted": "Credentials removed for public portfolio"
+        }
+      },
+      {
+        "name": "Qdrant Vector Store Retrieve As Tool",
+        "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+        "parameters": {
+          "mode": "retrieve-as-tool",
+          "qdrantCollection": {
+            "value": "knowledge_base",
+            "mode": "id"
+          }
+        },
+        "credentials": {
+          "redacted": "Credentials removed for public portfolio"
+        }
+      },
+      {
+        "name": "Ollama Embeddings",
+        "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+        "parameters": {
+          "model": "nomic-embed-text:latest"
+        },
+        "credentials": {
+          "redacted": "Credentials removed for public portfolio"
+        }
+      }
+    ]
+  },
+  "publicNotes": "Redacted portfolio version. Credentials, private paths, webhook IDs, and instance metadata removed."
+}

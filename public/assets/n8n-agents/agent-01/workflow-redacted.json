@@ -1,0 +1,66 @@
+{
+  "name": "Telegram AI Bot Agent - Redacted Portfolio Version",
+  "nodes": [
+    {
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 10
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Telegram Updates",
+      "type": "n8n-nodes-base.httpRequest",
+      "parameters": {
+        "url": "https://api.telegram.org/botREDACTED_TELEGRAM_BOT_TOKEN/getUpdates?offset={{ $getWorkflowStaticData('global').lastUpdateId ? $getWorkflowStaticData('global').lastUpdateId + 1 : 0 }}&limit=10"
+      }
+    },
+    {
+      "name": "Parse Latest Message",
+      "type": "n8n-nodes-base.code",
+      "parameters": {
+        "jsCode": "const staticData = $getWorkflowStaticData('global');\nconst updates = $json.result || [];\nif (!updates.length) return [];\nconst latest = updates[updates.length - 1];\nstaticData.lastUpdateId = latest.update_id;\nreturn [{ json: { update_id: latest.update_id, chat_id: latest.message.chat.id, text: latest.message.text } }];"
+      }
+    },
+    {
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}"
+      }
+    },
+    {
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "parameters": {
+        "model": {
+          "mode": "list",
+          "value": "gpt-5-mini"
+        }
+      },
+      "credentials": {
+        "redacted": "Credentials removed for public portfolio"
+      }
+    },
+    {
+      "name": "Send Telegram Reply",
+      "type": "n8n-nodes-base.telegram",
+      "parameters": {
+        "chatId": "={{ $('Parse Latest Message').item.json.chat_id }}",
+        "text": "={{ $json.output }}"
+      },
+      "credentials": {
+        "redacted": "Credentials removed for public portfolio"
+      }
+    }
+  ],
+  "publicNotes": "Bot token, credential IDs, webhook IDs, and instance metadata are intentionally removed."
+}

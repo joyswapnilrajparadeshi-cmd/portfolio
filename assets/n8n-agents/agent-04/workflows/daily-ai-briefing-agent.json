@@ -1,0 +1,309 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -544,
+        80
+      ],
+      "id": "b2368dae-5aae-4de3-84f9-0a492496a710",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Create today's daily briefing with Mumbai weather, Bitcoin and Ethereum prices, and latest AI news.",
+        "options": {
+          "systemMessage": "You are a daily briefing automation agent.\n\nEvery time this workflow runs:\n1. Get weather for Mumbai.\n2. Get Bitcoin and Ethereum prices.\n3. Get latest AI news.\n4. Create a short daily briefing.\n\nRules:\n- Always use tools for live data.\n- Do not guess weather, prices, or news.\n- Keep the report clean and readable.\n- Format with headings: Weather, Crypto, News."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -304,
+        80
+      ],
+      "id": "c24b229d-822a-4ccd-89ae-d576b4426eff",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -496,
+        336
+      ],
+      "id": "e8b81fab-20d4-4059-99fe-3464beee7ee6",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "REDACTED_CREDENTIAL_ID",
+          "name": "REDACTED_CREDENTIAL_NAME"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://geocoding-api.open-meteo.com/v1/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $fromAI(\"city\", \"City name to search weather for\") }}"
+            },
+            {
+              "name": "count",
+              "value": "1"
+            },
+            {
+              "name": "language",
+              "value": "en"
+            },
+            {
+              "name": "format",
+              "value": "json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        -288,
+        336
+      ],
+      "id": "66f9353a-ad20-45e3-b623-2fcbe828822d",
+      "name": "Get Coordinates"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to fetch current weather using latitude and longitude.\n\nYou must use this tool after getting coordinates from \"Get Coordinates\".\n\nReturn:\n- temperature\n- wind speed\n- weather condition\n\nAlways use real data, do not guess.",
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "latitude",
+              "value": "={{ $fromAI(\"latitude\", \"Latitude from Get Coordinates\") }}"
+            },
+            {
+              "name": "longitude",
+              "value": "={{ $fromAI(\"longitude\", \"Longitude from Get Coordinates\") }}"
+            },
+            {
+              "name": "current_weather",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        -112,
+        336
+      ],
+      "id": "fffc727d-7058-4858-97b1-5715a8fdd208",
+      "name": "Get Weather"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to fetch live cryptocurrency prices.\n\nUse it when the user asks for crypto prices like Bitcoin, Ethereum, Solana, or other coins.\n\nThe coin_id must be a CoinGecko id such as bitcoin, ethereum, solana.\n\nReturn price in USD and INR.",
+        "url": "https://api.coingecko.com/api/v3/simple/price",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "ids",
+              "value": "={{ $fromAI(\"coin_id\", \"CoinGecko coin id, for example bitcoin, ethereum, solana\") }}"
+            },
+            {
+              "name": "vs_currencies",
+              "value": "usd,inr"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        80,
+        336
+      ],
+      "id": "5b7104df-6d8f-459f-bb73-1c9e641c61d0",
+      "name": "Get Crypto Price"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to search latest news articles about a topic.\n\nUse it when the user asks for:\n- latest news\n- recent updates\n- research on a topic\n- headlines\n\nInput should be a news topic like AI, crypto, technology, sports, business.\n\nReturn article titles, descriptions, sources, published dates, and URLs.",
+        "url": "https://gnews.io/api/v4/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $fromAI(\"topic\", \"News topic user wants to research, for example AI, crypto, technology\") }}"
+            },
+            {
+              "name": "lang",
+              "value": "en"
+            },
+            {
+              "name": "country",
+              "value": "in"
+            },
+            {
+              "name": "max",
+              "value": "5"
+            },
+            {
+              "name": "apikey",
+              "value": "REDACTED_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        240,
+        192
+      ],
+      "id": "e01f236d-a64c-482f-811c-68fad04a86bc",
+      "name": "Search News"
+    },
+    {
+      "parameters": {
+        "fromEmail": "REDACTED_EMAIL",
+        "toEmail": "REDACTED_EMAIL",
+        "subject": "Daily AI Briefing",
+        "html": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        32,
+        32
+      ],
+      "id": "fb04c327-9c6b-4a5e-86a5-a656fdea3cbb",
+      "name": "Send an Email",
+      "webhookId": "REDACTED_WEBHOOK_ID",
+      "credentials": {
+        "smtp": {
+          "id": "REDACTED_CREDENTIAL_ID",
+          "name": "REDACTED_CREDENTIAL_NAME"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Coordinates": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Weather": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Crypto Price": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search News": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "REDACTED_INSTANCE_ID"
+  }
+}

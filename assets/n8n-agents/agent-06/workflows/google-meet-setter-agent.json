@@ -1,0 +1,258 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Request Google Meet",
+        "formDescription": "Fill this form to request a meeting link",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name"
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "Company"
+            },
+            {
+              "fieldLabel": "Requirement",
+              "fieldType": "textarea"
+            },
+            {
+              "fieldLabel": "Budget",
+              "fieldType": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        -672,
+        16
+      ],
+      "id": "9f5f35ae-4cf1-47ba-ba51-67a5cb140f3e",
+      "name": "On form submission",
+      "webhookId": "REDACTED_WEBHOOK_ID"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ac6a3435-33bb-4efc-b0db-7bb5cdd5045e",
+              "leftValue": "={{ JSON.parse($json.output.replace(/```json|```/g, '').trim()).approved === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -256,
+        16
+      ],
+      "id": "dd2fe553-fbba-4d0c-b558-c2c37161ec80",
+      "name": "Check Requirements"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://meet.googleapis.com/v2/spaces",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "97cb9de8-dd82-4bc4-b854-9aa6b9ebd486",
+      "name": "Create Meet Link",
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "REDACTED_CREDENTIAL_ID",
+          "name": "REDACTED_CREDENTIAL_NAME"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ JSON.parse($('Check Requirements').item.json.output.replace(/```json|```/g, '').trim()).email }}",
+        "subject": "Your Google Meet Link",
+        "message": "=Hi {{ JSON.parse($('Check Requirements').item.json.output.replace(/```json|```/g, '').trim()).name }},  Your request has been approved.  Here is your Google Meet link:  {{ $('Create Meet Link').item.json.meetingUri }}  Regards, Team",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        80,
+        288
+      ],
+      "id": "d53e9719-cfdb-4248-859d-226a7398a63b",
+      "name": "Send a message",
+      "webhookId": "REDACTED_WEBHOOK_ID",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REDACTED_CREDENTIAL_ID",
+          "name": "REDACTED_CREDENTIAL_NAME"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a lead qualification agent.\n\nDecide whether the user should receive an automatic Google Meet link.\n\nApproval rules:\nApprove only if all of these are true:\n- email is present and valid\n- company is present\n- requirement is clear and genuine\n- requirement is related to a demo, consultation, onboarding, product discussion, AI automation, workflow automation, or business meeting\n- budget is 5000 or more\n\nReject if any of these are true:\n- email is missing\n- company is missing\n- requirement is missing, unclear, spam, casual, abusive, or unrelated\n- budget is missing or below 5000\n\nImportant:\nUse the actual form values provided below.\nReturn ONLY valid JSON.\nDo not include markdown.\nDo not include ```json.\nDo not include any explanation outside JSON.\n\nForm details:\nName: {{ $json[\"Name\"] }}\nEmail: {{ $json[\"Email\"] }}\nCompany: {{ $json[\"Company\"] }}\nRequirement: {{ $json[\"Requirement\"] }}\nBudget: {{ $json[\"Budget\"] }}\n\nReturn exactly this JSON structure:\n\n{\n  \"approved\": true_or_false,\n  \"reason\": \"short clear reason\",\n  \"email\": \"{{ $json[\"Email\"] }}\",\n  \"name\": \"{{ $json[\"Name\"] }}\"\n}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -496,
+        144
+      ],
+      "id": "175583a3-4c98-45bd-bb36-194b7083a786",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -528,
+        416
+      ],
+      "id": "69b351ff-321f-481d-a472-dd5b249bafb9",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "REDACTED_CREDENTIAL_ID",
+          "name": "REDACTED_CREDENTIAL_NAME"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ JSON.parse($('Check Requirements').item.json.output.replace(/```json|```/g, '').trim()).email }}",
+        "subject": "Your Google Meet Request Was Not Accepted",
+        "message": "=Hi {{ JSON.parse($('Check Requirements').item.json.output.replace(/```json|```/g, '').trim()).name }},\n\nThank you for your interest in scheduling a Google Meet session with us.\n\nAfter reviewing your submission, we are unable to automatically approve your request at this time.\n\nReason:\n{{ JSON.parse($('Check Requirements').item.json.output.replace(/```json|```/g, '').trim()).reason }}\n\nRegards,\nTeam",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -192,
+        256
+      ],
+      "id": "07fa962d-ad39-4808-b28a-90b08ce7dbd0",
+      "name": "Send a message1",
+      "webhookId": "REDACTED_WEBHOOK_ID",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REDACTED_CREDENTIAL_ID",
+          "name": "REDACTED_CREDENTIAL_NAME"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Requirements": {
+      "main": [
+        [
+          {
+            "node": "Create Meet Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Meet Link": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Check Requirements",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "REDACTED_INSTANCE_ID"
+  }
+}

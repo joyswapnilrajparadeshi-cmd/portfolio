@@ -1,0 +1,185 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "AI Auto Call Agent",
+        "formDescription": "Submit a phone number and message to trigger an automated AI voice call.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Recipient Name",
+              "fieldName": "recipient_name"
+            },
+            {
+              "fieldLabel": "Phone Number",
+              "fieldName": "phone_number"
+            },
+            {
+              "fieldLabel": "Deadline",
+              "fieldName": "deadline"
+            },
+            {
+              "fieldLabel": "Reminder Purpose",
+              "fieldType": "textarea",
+              "fieldName": "purpose"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        -320,
+        -144
+      ],
+      "id": "041caca7-4ccd-47ce-b2e0-3c42d26770a1",
+      "name": "On form submission",
+      "webhookId": "REDACTED_WEBHOOK_ID"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/REDACTED_TWILIO_ACCOUNT_SID/Calls.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "To",
+              "value": "={{ $json.phone_number }}"
+            },
+            {
+              "name": "From",
+              "value": "REDACTED_PHONE_NUMBER"
+            },
+            {
+              "name": "Twiml",
+              "value": "=<Response><Say voice=\"alice\">{{ $json.call_message }}</Say></Response>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        64
+      ],
+      "id": "070813ed-c2e3-4bb7-af9d-86492cbc863c",
+      "name": "HTTP Request",
+      "credentials": {
+        "redacted": "REDACTED_CREDENTIAL"
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a professional reminder call assistant.\n\nCreate a short, polite voice-call reminder message.\n\nRecipient name:\n{{ $json.recipient_name }}\n\nPurpose:\n{{ $json.purpose }}\n\nDeadline:\n{{ $json.deadline }}\n\nRules:\n- Message must be under 35 words.\n- Do not sound spammy.\n- Do not mention AI.\n- Keep it polite and direct.\n- Return only valid JSON.\n\nReturn:\n{\n  \"call_message\": \"\"\n}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -128,
+        -144
+      ],
+      "id": "6d629527-99a1-42d0-b639-412777c3d553",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -272,
+        64
+      ],
+      "id": "60e7242b-9add-40b7-8269-f376dc1c527f",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "redacted": "REDACTED_CREDENTIAL"
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.output;\nconst parsed = JSON.parse(raw);\n\nreturn [\n  {\n    json: {\n      ...$('On form submission').item.json,\n      call_message: parsed.call_message\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        192,
+        -160
+      ],
+      "id": "ce2b70ac-d9c1-40e9-8e34-e340a634b519",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "REDACTED_INSTANCE_ID"
+  }
+}

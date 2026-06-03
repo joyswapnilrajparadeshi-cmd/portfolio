@@ -1,0 +1,57 @@
+{
+  "system": "RAG Knowledge Base Assistant",
+  "workflow": {
+    "name": "RAG Document Ingestion - Redacted Portfolio Version",
+    "nodes": [
+      {
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "parameters": {}
+      },
+      {
+        "name": "Read Knowledge Files",
+        "type": "n8n-nodes-base.readWriteFile",
+        "parameters": {
+          "fileSelector": "/path/to/knowledge-base/*.txt"
+        }
+      },
+      {
+        "name": "Extract Text",
+        "type": "n8n-nodes-base.extractFromFile",
+        "parameters": {
+          "operation": "text"
+        }
+      },
+      {
+        "name": "Qdrant Vector Store Insert",
+        "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+        "parameters": {
+          "mode": "insert",
+          "qdrantCollection": {
+            "value": "knowledge_base",
+            "mode": "id"
+          }
+        },
+        "credentials": {
+          "redacted": "Credentials removed for public portfolio"
+        }
+      },
+      {
+        "name": "Ollama Embeddings",
+        "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+        "parameters": {
+          "model": "nomic-embed-text:latest"
+        },
+        "credentials": {
+          "redacted": "Credentials removed for public portfolio"
+        }
+      },
+      {
+        "name": "Default Data Loader",
+        "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+        "parameters": {}
+      }
+    ]
+  },
+  "publicNotes": "Redacted portfolio version. Credentials, private paths, webhook IDs, and instance metadata removed."
+}

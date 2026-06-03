@@ -1,0 +1,1 @@
+Place screenshots for this n8n agent here. Use names listed in ASSET_PLACEMENT_GUIDE.md. Blur credentials, API keys, emails, tokens, webhook URLs, and internal company/client data before adding screenshots.

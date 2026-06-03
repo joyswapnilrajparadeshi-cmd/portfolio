@@ -5,3 +5,4 @@ dist/
 portfolio_patch_backup_*/
 workflow_json_viewer_patch_backup_*/
 real_n8n_json_patch_backup_*/
+*_backup_*/

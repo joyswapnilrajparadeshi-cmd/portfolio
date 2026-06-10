@@ -10,7 +10,7 @@ export const profile = {
   photo: 'assets/profile/joy-profile.jpg',
   headline: 'AI Research Intern building production-grade AI agents, automation systems, and full-stack products.',
   summary:
-    'I build AI-powered products that connect automation, research workflows, geospatial intelligence, and full-stack engineering — from n8n agent systems to CrisisTwin AI, a hosted disaster-response digital twin.',
+    'I build AI-powered products that connect automation, research workflows, career intelligence, geospatial systems, and full-stack engineering — from CareerTwin AI and CrisisTwin AI to n8n agent systems.',
   availability: 'Available for AI research, full-stack, automation, and product engineering opportunities'
 };
 
@@ -20,14 +20,15 @@ export const proofBadges = [
   'NPTEL NLP Top 5%',
   'JNTUA Academic Topper',
   '9 n8n AI Agents Built',
+  'CareerTwin AI — Live Product',
   'CrisisTwin AI — Live Product'
 ];
 
 export const stats = [
+  { value: '2', label: 'flagship AI products live: CareerTwin AI and CrisisTwin AI' },
   { value: '9', label: 'n8n AI agents spanning chat, RAG, email, voice, meetings, CRM, and briefings' },
   { value: 'Top 5%', label: 'NPTEL Natural Language Processing certification' },
-  { value: 'GATE', label: 'Qualified GATE 2026' },
-  { value: 'Live', label: 'CrisisTwin AI hosted with maps, risk scoring, AI intelligence, auth, and reports' }
+  { value: 'GATE', label: 'Qualified GATE 2026' }
 ];
 
 export const experience = [
@@ -47,6 +48,39 @@ export const experience = [
 ];
 
 export const flagshipProjects = [
+  {
+    title: 'CareerTwin AI',
+    tag: 'Flagship AI Product',
+    status: 'Hosted project',
+    live: 'https://careertwin-ai.onrender.com',
+    github: 'https://github.com/joyswapnilrajparadeshi-cmd/careertwin-ai',
+    cover: 'assets/careertwin-ai/screenshots/01-landing.jpeg',
+    screenshots: [
+      'assets/careertwin-ai/screenshots/01-landing.jpeg',
+      'assets/careertwin-ai/screenshots/02-resume-upload.jpeg',
+      'assets/careertwin-ai/screenshots/03-weekly-roadmap.jpeg',
+      'assets/careertwin-ai/screenshots/04-skill-gap-ats.jpeg',
+      'assets/careertwin-ai/screenshots/05-mock-interview-kit.jpeg',
+      'assets/careertwin-ai/screenshots/06-platform-status.jpeg'
+    ],
+    description:
+      'An AI-powered placement and interview readiness command center that turns resumes, target roles, job descriptions, skills, and weak areas into a practical readiness score, ATS fixes, coding sprint, mock interview kit, weekly placement roadmap, saved plans, and export-ready reports.',
+    problem:
+      'Students preparing for placements often have scattered resumes, weak ATS signals, unclear role gaps, no structured weekly plan, and limited mock interview guidance.',
+    solution:
+      'CareerTwin AI converts resume and role inputs into a live placement-readiness workspace with Groq-powered analysis, resume extraction, skill-gap intelligence, interview preparation, saved Supabase plans, and printable PDF reports.',
+    features: [
+      'Groq-powered readiness analysis with local fallback engine',
+      'PDF, DOCX, and TXT resume upload with editable extracted text',
+      '0-100 placement readiness score and candidate snapshot',
+      'ATS fixes, keyword gaps, resume signals, and skill-gap matrix',
+      'Weekly coding sprint and placement preparation roadmap',
+      'Technical, HR, project, and scenario-based mock interview kit',
+      'Supabase-backed saved plans for students, mentors, and admins',
+      'Print/PDF export-ready placement readiness report'
+    ],
+    stack: ['React', 'Vite', 'Groq AI', 'Supabase', 'Resume Extraction', 'PDF/DOCX/TXT', 'ATS Intelligence', 'PDF Export']
+  },
   {
     title: 'CrisisTwin AI',
     tag: 'Flagship AI Product',

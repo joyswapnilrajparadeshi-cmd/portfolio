@@ -172,7 +172,7 @@ function Hero() {
             <div><strong>Current</strong><span>AI Research Intern</span></div>
             <div><strong>Proof</strong><span>GATE + NPTEL Top 5%</span></div>
             <div><strong>Focus</strong><span>AI agents + full-stack</span></div>
-            <div><strong>Project</strong><span>CrisisTwin AI</span></div>
+            <div><strong>Products</strong><span>CareerTwin + CrisisTwin</span></div>
           </div>
         </motion.aside>
       </div>
@@ -232,9 +232,9 @@ function FlagshipProjects({ openPreview }) {
     <section id="projects" className="section-pad alt-section">
       <div className="container">
         <SectionHeader
-          eyebrow="Flagship project"
-          title="CrisisTwin AI — a full-stack disaster-response product."
-          description="A hosted AI product combining geospatial maps, weather intelligence, image understanding, emergency routing, saved missions, authentication, and PDF reports."
+          eyebrow="Flagship projects"
+          title="Live AI products built end-to-end."
+          description="Featured full-stack AI systems with deployed demos, real workflows, dashboards, screenshots, authentication, saved data, and export-ready outputs."
         />
 
         {flagshipProjects.map((project) => (
@@ -256,7 +256,7 @@ function FlagshipProjects({ openPreview }) {
               </div>
             </div>
             <div className="flagship-media">
-              <SafeImage src={project.cover} alt={`${project.title} dashboard`} className="flagship-cover" fallbackLabel="Add CrisisTwin screenshot" />
+              <SafeImage src={project.cover} alt={`${project.title} dashboard`} className="flagship-cover" fallbackLabel={`Add ${project.title} screenshot`} />
               <div className="screenshot-grid">
                 {project.screenshots.map((shot, index) => (
                   <button key={shot} onClick={() => openPreview({ src: shot, alt: `${project.title} screenshot ${index + 1}` })}>
@@ -472,7 +472,7 @@ function About() {
         </div>
         <div className="about-copy">
           <p>
-            I am an AI-focused full-stack developer who enjoys building practical systems that combine AI, automation, web engineering, and product thinking. My recent work includes n8n-based AI agents, CrisisTwin AI, and full-stack platforms with dashboards, workflows, authentication, reports, and deployed demos.
+            I am an AI-focused full-stack developer who enjoys building practical systems that combine AI, automation, web engineering, and product thinking. My recent work includes CareerTwin AI, CrisisTwin AI, n8n-based AI agents, and full-stack platforms with dashboards, workflows, authentication, reports, and deployed demos.
           </p>
           <p>
             I focus on turning technical learning into working systems: AI agents, RAG assistants, automation pipelines, geospatial dashboards, report workflows, and deployed full-stack products.
@@ -510,7 +510,7 @@ function Navigation() {
         <a href="#home" className="brand"><span>J</span>{profile.shortName}</a>
         <nav>
           <a href="#experience">Experience</a>
-          <a href="#projects">CrisisTwin</a>
+          <a href="#projects">Flagship Work</a>
           <a href="#agents">AI Agents</a>
           <a href="#achievements">Proof</a>
           <a href="#contact">Contact</a>

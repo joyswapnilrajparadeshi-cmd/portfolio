@@ -364,7 +364,7 @@ export const projects = [
     category: 'Civic Tech',
     description:
       'Citizen complaint-management platform with admin and user workflows for efficient issue tracking and resolution.',
-    live: 'https://municipal-complaint.ct.ws',
+    live: 'http://municipal-complaint.gt.tc/',
     github: '',
     image: 'assets/projects/municipal.png',
     stack: ['Admin Panel', 'User Roles', 'Dashboard']

@@ -8,9 +8,9 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/joy-swapnil-raj-paradeshi-23b3aa387',
   resume: 'assets/resume/Joy_Swapnil_Raj_Paradeshi_Resume.pdf',
   photo: 'assets/profile/joy-profile.jpg',
-  headline: 'AI Research Intern building production-grade AI agents, automation systems, and full-stack products.',
-  summary:
-    'I build AI-powered products that connect automation, research workflows, career intelligence, geospatial systems, and full-stack engineering — from CareerTwin AI and CrisisTwin AI to n8n agent systems.',
+  headline: 'AI Research Intern building production-grade AI agents, document intelligence platforms, mobile apps, and full-stack products.',
+summary:
+  'I build AI-powered products that connect automation, research workflows, career intelligence, geospatial systems, document intelligence, Android APK delivery, and full-stack engineering — from CareerTwin AI, CrisisTwin AI, and DocuMind AI to n8n agent systems.',
   availability: 'Available for AI research, full-stack, automation, and product engineering opportunities'
 };
 
@@ -21,11 +21,12 @@ export const proofBadges = [
   'JNTUA Academic Topper',
   '9 n8n AI Agents Built',
   'CareerTwin AI — Live Product',
-  'CrisisTwin AI — Live Product'
+  'CrisisTwin AI — Live Product',
+  'DocuMind AI — Live + Android APK'
 ];
 
 export const stats = [
-  { value: '2', label: 'flagship AI products live: CareerTwin AI and CrisisTwin AI' },
+  { value: '3', label: 'major AI products completed: CareerTwin AI, CrisisTwin AI, and DocuMind AI' },
   { value: '9', label: 'n8n AI agents spanning chat, RAG, email, voice, meetings, CRM, and briefings' },
   { value: 'Top 5%', label: 'NPTEL Natural Language Processing certification' },
   { value: 'GATE', label: 'Qualified GATE 2026' }
@@ -48,6 +49,53 @@ export const experience = [
 ];
 
 export const flagshipProjects = [
+  {
+    title: 'DocuMind AI',
+    tag: 'Document Intelligence + Android APK',
+    status: 'Live full-stack product',
+    live: 'https://documind-ai-knq5.onrender.com',
+    github: 'https://github.com/joyswapnilrajparadeshi-cmd/documind-ai',
+    apk: 'https://github.com/joyswapnilrajparadeshi-cmd/documind-ai/releases/download/v1.0.0/DocuMind-AI-debug-fixed.apk',
+    cover: 'assets/documind-ai/screenshots/01-documind-ai-cover.png',
+    screenshots: [
+      'assets/documind-ai/screenshots/01-documind-ai-cover.png',
+      'assets/documind-ai/screenshots/02-documind-home.jpeg',
+      'assets/documind-ai/screenshots/03-upload-and-ai.jpeg',
+      'assets/documind-ai/screenshots/04-full-report.jpeg',
+      'assets/documind-ai/screenshots/05-workspaces-auth.jpeg'
+    ],
+    description:
+      'A full-stack AI-powered Document Intelligence platform that turns long PDFs, DOCX files, TXT notes, resumes, reports, and policies into summaries, document Q&A, smart notes, risks, tasks, deadlines, action points, saved workspaces, and export-ready PDF reports.',
+    problem:
+      'Students, professionals, and teams handle long documents every day, but extracting key points, risks, deadlines, and next actions still takes too much manual reading time.',
+    solution:
+      'DocuMind AI converts uploaded documents into clear AI-powered insights through a React/Vite interface, Express backend, Groq AI intelligence, Supabase authentication and database storage, PWA support, and an Android APK built with Capacitor.',
+    features: [
+      'Upload PDF, DOCX, and TXT documents',
+      'Generate AI-powered summaries and key insights',
+      'Ask questions directly from the document content',
+      'Extract tasks, deadlines, and action points',
+      'Generate smart notes for faster review',
+      'Identify risks, concerns, and important signals',
+      'Save document workspaces with Supabase',
+      'Export professional PDF reports',
+      'Install as a mobile PWA and run as an Android APK',
+      'Native Android PDF export support through Capacitor workflow'
+    ],
+    stack: [
+      'React',
+      'Vite',
+      'Node.js',
+      'Express',
+      'Groq AI',
+      'Supabase Auth',
+      'Supabase Database',
+      'Render',
+      'PWA',
+      'Capacitor Android',
+      'PDF Export'
+    ]
+  },
   {
     title: 'CareerTwin AI',
     tag: 'Flagship AI Product',
@@ -528,9 +576,9 @@ export const skills = [
     items: ['Node.js', 'Express.js', 'PHP', 'REST APIs', 'Authentication', 'Role-Based Access']
   },
   {
-    group: 'AI & Automation',
-    items: ['OpenAI', 'Prompt Engineering', 'n8n', 'AI Agents', 'Workflow Automation', 'NLP', 'RAG']
-  },
+  group: 'AI & Automation',
+  items: ['OpenAI', 'Groq AI', 'Prompt Engineering', 'n8n', 'AI Agents', 'Workflow Automation', 'NLP', 'RAG', 'Document AI']
+},
   {
     group: 'Agentic Integrations',
     items: ['Qdrant', 'OpenAI Embeddings', 'Telegram Bot API', 'Twilio', 'Gmail', 'Google Sheets', 'Google Calendar']
@@ -540,9 +588,13 @@ export const skills = [
     items: ['Power BI', 'Excel', 'Dashboards', 'Reports', 'Data Workflows']
   },
   {
-    group: 'Product Systems',
-    items: ['Supabase', 'PostgreSQL', 'PDF Reports', 'Saved Workflows', 'Admin Panels']
-  },
+  group: 'Product Systems',
+  items: ['Supabase', 'Supabase Auth', 'PostgreSQL', 'PDF Reports', 'Saved Workspaces', 'Admin Panels', 'Render Deployment']
+},
+  {
+  group: 'Mobile App Development',
+  items: ['Android', 'Capacitor Android', 'PWA Support', 'Mobile UI', 'Document Workflows', 'APK Delivery', 'Native PDF Export']
+},
   {
     group: 'Geospatial & Crisis Tech',
     items: ['Leaflet', 'OpenStreetMap', 'Routing', 'Weather APIs', 'Risk Scoring']

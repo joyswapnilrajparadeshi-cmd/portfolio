@@ -9,6 +9,7 @@ import {
   BriefcaseBusiness,
   ChevronRight,
   Code2,
+  Download,
   ExternalLink,
   FileText,
   GraduationCap,
@@ -172,7 +173,7 @@ function Hero() {
             <div><strong>Current</strong><span>AI Research Intern</span></div>
             <div><strong>Proof</strong><span>GATE + NPTEL Top 5%</span></div>
             <div><strong>Focus</strong><span>AI agents + full-stack</span></div>
-            <div><strong>Products</strong><span>CareerTwin + CrisisTwin</span></div>
+            <div><strong>Products</strong><span>CareerTwin + CrisisTwin + DocuMind</span></div>
           </div>
         </motion.aside>
       </div>
@@ -251,9 +252,10 @@ function FlagshipProjects({ openPreview }) {
                 {project.stack.map((item) => <span className="chip" key={item}>{item}</span>)}
               </div>
               <div className="button-row">
-                <LinkButton href={project.live} variant="primary" icon={ExternalLink}>Live demo</LinkButton>
-                <LinkButton href={project.github} variant="secondary" icon={Github}>GitHub</LinkButton>
-              </div>
+  <LinkButton href={project.live} variant="primary" icon={ExternalLink}>Live demo</LinkButton>
+  <LinkButton href={project.github} variant="secondary" icon={Github}>GitHub</LinkButton>
+  {project.apk && <LinkButton href={project.apk} variant="secondary" icon={Download}>APK demo</LinkButton>}
+</div>
             </div>
             <div className="flagship-media">
               <SafeImage src={project.cover} alt={`${project.title} dashboard`} className="flagship-cover" fallbackLabel={`Add ${project.title} screenshot`} />
@@ -472,10 +474,10 @@ function About() {
         </div>
         <div className="about-copy">
           <p>
-            I am an AI-focused full-stack developer who enjoys building practical systems that combine AI, automation, web engineering, and product thinking. My recent work includes CareerTwin AI, CrisisTwin AI, n8n-based AI agents, and full-stack platforms with dashboards, workflows, authentication, reports, and deployed demos.
+            I am an AI-focused full-stack developer who enjoys building practical systems that combine AI, automation, web engineering, mobile delivery, and product thinking. My recent work includes CareerTwin AI, CrisisTwin AI, DocuMind AI, n8n-based AI agents, and full-stack platforms with dashboards, workflows, authentication, saved workspaces, PDF reports, deployed demos, PWA support, and Android APK delivery.
           </p>
           <p>
-            I focus on turning technical learning into working systems: AI agents, RAG assistants, automation pipelines, geospatial dashboards, report workflows, and deployed full-stack products.
+            I focus on turning technical learning into working systems: AI agents, RAG assistants, automation pipelines, geospatial dashboards, document-intelligence workflows, report exports, and deployed full-stack products.
           </p>
         </div>
       </div>
